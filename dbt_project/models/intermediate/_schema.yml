@@ -1,0 +1,8 @@
+version: 2
+models:
+  - name: int_property_sales
+    columns:
+      - name: bbl
+        tests: [not_null]
+      - name: price_per_sqft
+        tests: [not_null]

@@ -1,0 +1,10 @@
+version: 2
+models:
+  - name: mart_borough_trends
+    columns:
+      - name: borough_code
+        tests: [not_null]
+  - name: mart_neighborhood_trends
+    columns:
+      - name: neighborhood
+        tests: [not_null]

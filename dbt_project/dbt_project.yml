@@ -1,0 +1,14 @@
+name: 'nyc_property'
+version: '1.0.0'
+profile: 'nyc_property'
+model-paths: ["models"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  nyc_property:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: stg_rolling_sales
+    columns:
+      - name: bbl
+        tests: [not_null]
+      - name: sale_price
+        tests: [not_null]
+  - name: stg_pluto
+    columns:
+      - name: bbl
+        tests: [not_null, unique]
