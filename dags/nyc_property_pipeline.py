@@ -19,7 +19,7 @@ default_args = {"owner": "vansh", "retries": 1}
 def nyc_property_pipeline():
     ingest = BashOperator(
         task_id="dlt_ingest",
-        bash_command=f"rm -rf ~/.dlt/pipelines/nyc_property && python {INCLUDE}/dlt_pipeline/pipeline.py",
+        bash_command=f"python {INCLUDE}/dlt_pipeline/pipeline.py",
     )
     dbt_run = BashOperator(
         task_id="dbt_run",
