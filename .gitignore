@@ -219,3 +219,6 @@ __marimo__/
 
 *.duckdb
 *.duckdb.wal
+
+.astro
+airflow_settings.yaml

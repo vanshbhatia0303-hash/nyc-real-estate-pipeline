@@ -51,6 +51,8 @@ def nyc_property_source():
     return rolling_sales(), pluto()
 
 if __name__ == "__main__":
-    pipeline = dlt.pipeline(pipeline_name="nyc_property", destination="duckdb", dataset_name="raw")
+    import os
+    duckdb_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "nyc_property.duckdb")
+    pipeline = dlt.pipeline(pipeline_name="nyc_property", destination=dlt.destinations.duckdb(duckdb_path), dataset_name="raw")
     info = pipeline.run(nyc_property_source())
     print(info)

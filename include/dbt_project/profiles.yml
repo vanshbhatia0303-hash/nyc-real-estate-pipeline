@@ -1,0 +1,7 @@
+nyc_property:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "/usr/local/airflow/include/nyc_property.duckdb"
+      threads: 4
