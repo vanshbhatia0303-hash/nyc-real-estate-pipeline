@@ -224,3 +224,6 @@ __marimo__/
 airflow_settings.yaml
 
 .dlt_pipelines
+node_modules/
+dashboard/build/
+dashboard/.evidence/
