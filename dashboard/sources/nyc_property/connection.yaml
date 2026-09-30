@@ -1,0 +1,4 @@
+name: nyc_property
+type: duckdb
+options:
+  filename: nyc_property.duckdb

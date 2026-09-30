@@ -1,0 +1,1 @@
+select * from main.mart_data_quality limit 100000

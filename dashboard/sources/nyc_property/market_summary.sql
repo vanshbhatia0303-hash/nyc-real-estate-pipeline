@@ -1,0 +1,1 @@
+select * from main.mart_market_summary limit 100000

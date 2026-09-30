@@ -27,4 +27,3 @@ select
     try_cast(longitude as double) as longitude
 from {{ source('raw', 'pluto') }}
 where try_cast(bbl as bigint) is not null
-  and try_cast(bldgarea as double) > 0

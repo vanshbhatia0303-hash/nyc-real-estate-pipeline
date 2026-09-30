@@ -4,5 +4,5 @@ models:
     columns:
       - name: bbl
         tests: [not_null]
-      - name: price_per_sqft
+      - name: psf_eligible
         tests: [not_null]

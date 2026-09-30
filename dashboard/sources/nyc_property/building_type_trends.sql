@@ -1,0 +1,1 @@
+select * from main.mart_building_type_trends limit 100000

@@ -4,7 +4,11 @@ models:
     columns:
       - name: borough_code
         tests: [not_null]
-  - name: mart_neighborhood_trends
+  - name: mart_neighborhood_performance
     columns:
       - name: neighborhood
+        tests: [not_null]
+  - name: mart_data_quality
+    columns:
+      - name: total_transactions
         tests: [not_null]

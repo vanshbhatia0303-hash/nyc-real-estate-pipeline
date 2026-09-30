@@ -1,0 +1,1 @@
+select * from main.mart_borough_trends limit 100000

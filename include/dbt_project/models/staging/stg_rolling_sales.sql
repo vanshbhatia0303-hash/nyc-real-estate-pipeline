@@ -24,5 +24,4 @@ select
     community_board,
     council_district
 from {{ source('raw', 'rolling_sales') }}
-where try_cast(sale_price as double) > 0
-  and try_cast(bbl as bigint) is not null
+where try_cast(bbl as bigint) is not null
