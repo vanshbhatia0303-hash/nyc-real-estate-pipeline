@@ -1,0 +1,30 @@
+name: dbt CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  dbt-build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Ingest sample data
+        env:
+          DEV: "1"
+        run: python include/dlt_pipeline/pipeline.py
+
+      - name: dbt build
+        working-directory: include/dbt_project
+        run: dbt build --profiles-dir $GITHUB_WORKSPACE/.github/ci-profiles
+
+      - name: dbt test
+        working-directory: include/dbt_project
+        run: dbt test --profiles-dir $GITHUB_WORKSPACE/.github/ci-profiles
