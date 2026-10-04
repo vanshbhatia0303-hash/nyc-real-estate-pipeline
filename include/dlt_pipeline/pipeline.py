@@ -21,6 +21,7 @@ def fetch(resource_id, params, retries=5):
 def paginate(resource_id, where=None):
     last_id = None
     total = 0
+    pages = 0
     while True:
         clauses = [c for c in [where, f":id > '{last_id}'" if last_id else None] if c]
         params = {"$order": ":id", "$limit": PAGE, "$select": "*,:id"}
@@ -32,6 +33,9 @@ def paginate(resource_id, where=None):
         total += len(rows)
         print(f"{resource_id}: {total} rows fetched so far")
         yield rows
+        pages += 1
+        if DEV and pages >= 1:
+            break
         last_id = rows[-1][":id"]
         if len(rows) < PAGE:
             break
@@ -52,8 +56,10 @@ def nyc_property_source():
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    duckdb_path = os.path.join(script_dir, "..", "nyc_property.duckdb")
-    pipelines_dir = os.path.join(script_dir, "..", ".dlt_pipelines")
+    default_db = os.path.join(script_dir, "..", "nyc_property.duckdb")
+    default_state = os.path.join(script_dir, "..", ".dlt_pipelines")
+    duckdb_path = os.getenv("DUCKDB_PATH", default_db)
+    pipelines_dir = os.getenv("DLT_PIPELINES_DIR", default_state)
     pipeline = dlt.pipeline(
         pipeline_name="nyc_property",
         destination=dlt.destinations.duckdb(duckdb_path),
