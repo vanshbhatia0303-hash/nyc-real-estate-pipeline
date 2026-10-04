@@ -15,7 +15,8 @@
   "dependencies": {
     "@evidence-dev/core-components": "latest",
     "@evidence-dev/duckdb": "latest",
-    "@evidence-dev/evidence": "latest"
+    "@evidence-dev/evidence": "latest",
+    "git-remote-origin-url": "^4.0.0"
   },
   "allowScripts": {
     "@sveltejs/kit@2.8.4": true,
